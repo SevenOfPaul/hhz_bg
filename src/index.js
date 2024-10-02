@@ -19,19 +19,12 @@ const {postGame,postGames} = post;
     let response=new Response(await request.text());
     return response
   }
-  addEventListener('fetch', event => {
-    console.log(event,"event")
-    event.respondWith(scheduledEmit(event.request,ENV_hhz))
-  })
-  addEventListener('scheduled', event => {
-    event.respondWith(fetchEmit(event.request,ENV_hhz))
-  })
-  
-    async function scheduledEmit(event, env, ctx) {
+  export default {
+    async scheduled(event, env, ctx) {
       await env.hhz.put("games_backup",await env.hhz.get("games"));
       await env.hhz.put("games",JSON.stringify(raw));
-    }
-    async function fetchEmit(request, env, ctx) {
+    },
+    async fetch(request, env, ctx) {
       if(request.method=='GET'){
         //请求
         if(request.url.indexOf("addGame")!==-1){
@@ -55,4 +48,5 @@ const {postGame,postGames} = post;
       }else if(request.method=='OPTIONS'){
        return new Response("*");
       }
-    }
+    },
+  };

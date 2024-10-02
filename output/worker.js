@@ -279,6 +279,9 @@ var __webpack_exports__ = {};
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _functions_post_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/post.js */ "./src/functions/post.js");
 /* harmony import */ var _functions_get_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/get.js */ "./src/functions/get.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -296,17 +299,17 @@ function postCode(_x, _x2, _x3) {
   return _postCode.apply(this, arguments);
 }
 function _postCode() {
-  _postCode = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(request, env, ctx) {
+  _postCode = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(request, env, ctx) {
     var reqBody, body, response;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          _context.next = 2;
+          _context3.next = 2;
           return request.json();
         case 2:
-          reqBody = _context.sent;
+          reqBody = _context3.sent;
           body = {};
-          _context.next = 6;
+          _context3.next = 6;
           return env.hhz.put("code", JSON.stringify(reqBody.code));
         case 6:
           body = {
@@ -316,12 +319,12 @@ function _postCode() {
             }
           };
           response = new Response(JSON.stringify(body));
-          return _context.abrupt("return", response);
+          return _context3.abrupt("return", response);
         case 9:
         case "end":
-          return _context.stop();
+          return _context3.stop();
       }
-    }, _callee);
+    }, _callee3);
   }));
   return _postCode.apply(this, arguments);
 }
@@ -329,124 +332,112 @@ function test(_x4, _x5, _x6) {
   return _test.apply(this, arguments);
 }
 function _test() {
-  _test = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(request, env, ctx) {
+  _test = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(request, env, ctx) {
     var response;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
-        case 0:
-          _context2.t0 = Response;
-          _context2.next = 3;
-          return request.text();
-        case 3:
-          _context2.t1 = _context2.sent;
-          response = new _context2.t0(_context2.t1);
-          return _context2.abrupt("return", response);
-        case 6:
-        case "end":
-          return _context2.stop();
-      }
-    }, _callee2);
-  }));
-  return _test.apply(this, arguments);
-}
-addEventListener('fetch', function (event) {
-  event.respondWith(scheduledEmit(event.request, ENV_hhz));
-});
-addEventListener('scheduled', function (event) {
-  event.respondWith(fetchEmit(event.request, ENV_hhz));
-});
-function scheduledEmit(_x7, _x8, _x9) {
-  return _scheduledEmit.apply(this, arguments);
-}
-function _scheduledEmit() {
-  _scheduledEmit = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event, env, ctx) {
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
-        case 0:
-          _context3.t0 = env.hhz;
-          _context3.next = 3;
-          return env.hhz.get("games");
-        case 3:
-          _context3.t1 = _context3.sent;
-          _context3.next = 6;
-          return _context3.t0.put.call(_context3.t0, "games_backup", _context3.t1);
-        case 6:
-          _context3.next = 8;
-          return env.hhz.put("games", JSON.stringify(raw));
-        case 8:
-        case "end":
-          return _context3.stop();
-      }
-    }, _callee3);
-  }));
-  return _scheduledEmit.apply(this, arguments);
-}
-function fetchEmit(_x10, _x11, _x12) {
-  return _fetchEmit.apply(this, arguments);
-}
-function _fetchEmit() {
-  _fetchEmit = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(request, env, ctx) {
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          if (!(request.method == 'GET')) {
-            _context4.next = 8;
-            break;
-          }
-          if (!(request.url.indexOf("addGame") !== -1)) {
-            _context4.next = 3;
-            break;
-          }
-          return _context4.abrupt("return", addGame(request, env, ctx));
+          _context4.t0 = Response;
+          _context4.next = 3;
+          return request.text();
         case 3:
-          if (!(request.url.indexOf("code") !== -1)) {
-            _context4.next = 5;
-            break;
-          }
-          return _context4.abrupt("return", getCode(request, env, ctx));
-        case 5:
-          return _context4.abrupt("return", getGames(request, env, ctx));
-        case 8:
-          if (!(request.method == 'POST')) {
-            _context4.next = 18;
-            break;
-          }
-          if (!(request.url.indexOf("code") !== -1)) {
-            _context4.next = 11;
-            break;
-          }
-          return _context4.abrupt("return", postCode(request, env, ctx));
-        case 11:
-          if (!(request.url.indexOf("addGame") !== -1)) {
-            _context4.next = 13;
-            break;
-          }
-          return _context4.abrupt("return", postGame(request, env, ctx));
-        case 13:
-          if (!(request.url.indexOf("test") !== -1)) {
-            _context4.next = 15;
-            break;
-          }
-          return _context4.abrupt("return", test(request, env, ctx));
-        case 15:
-          return _context4.abrupt("return", postGames(request, env, ctx));
-        case 18:
-          if (!(request.method == 'OPTIONS')) {
-            _context4.next = 20;
-            break;
-          }
-          return _context4.abrupt("return", new Response("*"));
-        case 20:
+          _context4.t1 = _context4.sent;
+          response = new _context4.t0(_context4.t1);
+          return _context4.abrupt("return", response);
+        case 6:
         case "end":
           return _context4.stop();
       }
     }, _callee4);
   }));
-  return _fetchEmit.apply(this, arguments);
+  return _test.apply(this, arguments);
 }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  scheduled: function scheduled(event, env, ctx) {
+    return _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.t0 = env.hhz;
+            _context.next = 3;
+            return env.hhz.get("games");
+          case 3:
+            _context.t1 = _context.sent;
+            _context.next = 6;
+            return _context.t0.put.call(_context.t0, "games_backup", _context.t1);
+          case 6:
+            _context.next = 8;
+            return env.hhz.put("games", JSON.stringify(raw));
+          case 8:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }))();
+  },
+  fetch: function fetch(request, env, ctx) {
+    return _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (!(request.method == 'GET')) {
+              _context2.next = 8;
+              break;
+            }
+            if (!(request.url.indexOf("addGame") !== -1)) {
+              _context2.next = 3;
+              break;
+            }
+            return _context2.abrupt("return", addGame(request, env, ctx));
+          case 3:
+            if (!(request.url.indexOf("code") !== -1)) {
+              _context2.next = 5;
+              break;
+            }
+            return _context2.abrupt("return", getCode(request, env, ctx));
+          case 5:
+            return _context2.abrupt("return", getGames(request, env, ctx));
+          case 8:
+            if (!(request.method == 'POST')) {
+              _context2.next = 18;
+              break;
+            }
+            if (!(request.url.indexOf("code") !== -1)) {
+              _context2.next = 11;
+              break;
+            }
+            return _context2.abrupt("return", postCode(request, env, ctx));
+          case 11:
+            if (!(request.url.indexOf("addGame") !== -1)) {
+              _context2.next = 13;
+              break;
+            }
+            return _context2.abrupt("return", postGame(request, env, ctx));
+          case 13:
+            if (!(request.url.indexOf("test") !== -1)) {
+              _context2.next = 15;
+              break;
+            }
+            return _context2.abrupt("return", test(request, env, ctx));
+          case 15:
+            return _context2.abrupt("return", postGames(request, env, ctx));
+          case 18:
+            if (!(request.method == 'OPTIONS')) {
+              _context2.next = 20;
+              break;
+            }
+            return _context2.abrupt("return", new Response("*"));
+          case 20:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+    }))();
+  }
+});
 })();
 
-window.MyWorker = __webpack_exports__;
+self.MyWorker = __webpack_exports__;
 /******/ })()
 ;
 //# sourceMappingURL=worker.js.map
