@@ -3,7 +3,7 @@ async function postGames(request, env, ctx){
     let reqBody=await request.json();
     console.log(reqBody);
     let body={};
-        await env.hhz.put("games",JSON.stringify(reqBody.games));
+        await hhz.put("games",JSON.stringify(reqBody.games));
       body={
        code:200,
       body:{
@@ -16,10 +16,10 @@ async function postGames(request, env, ctx){
   async function postGame(request, env, ctx){
     let reqBody=await request.json();
     let body={};
-     let games=JSON.parse(await env.hhz.get("games"));
+     let games=JSON.parse(await hhz.get("games"));
       if(reqBody.game){
         games.push(reqBody.game);
-        await env.hhz.put("games",JSON.stringify(games));
+        await hhz.put("games",JSON.stringify(games));
       }
       body={
        code:200,

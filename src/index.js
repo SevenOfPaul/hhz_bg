@@ -5,7 +5,7 @@ const {postGame,postGames} = post;
   async function postCode(request, env, ctx){
     let reqBody=await request.json();
     let body={};
-     await env.hhz.put("code",JSON.stringify(reqBody.code));
+     await hhz.put("code",JSON.stringify(reqBody.code));
       body={
        code:200,
       body:{
@@ -19,12 +19,11 @@ const {postGame,postGames} = post;
     let response=new Response(await request.text());
     return response
   }
-  export default {
-    async scheduled(event, env, ctx) {
-      await env.hhz.put("games_backup",await env.hhz.get("games"));
-      await env.hhz.put("games",JSON.stringify(raw));
-    },
-    async fetch(request, env, ctx) {
+  async function  scheduledEmit(event, env, ctx) {
+      await hhz.put("games_backup",await hhz.get("games"));
+      await hhz.put("games",JSON.stringify(raw));
+    }
+    async  function fetchEmit(request, env, ctx) {
       if(request.method=='GET'){
         //请求
         if(request.url.indexOf("addGame")!==-1){
@@ -48,5 +47,10 @@ const {postGame,postGames} = post;
       }else if(request.method=='OPTIONS'){
        return new Response("*");
       }
-    },
-  };
+    }
+    addEventListener('scheduled', event => {
+        event.respondWith(scheduledEmit(event.request))
+      })
+      addEventListener('fetch', event => {
+        event.respondWith(fetchEmit(event.request))
+      })
