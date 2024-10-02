@@ -1,6 +1,4 @@
 name = "hzz"
-type = "javascript"
 
 [site]
-bucket = "./output"
-entry-point = "./output/worker.js"
+main  = "./output/worker.js"
