@@ -1,4 +1,16 @@
-
+async function postCode(request, env, ctx){
+    let reqBody=await request.json();
+    let body={};
+     await hhz.put("code",JSON.stringify(reqBody.code));
+      body={
+       code:200,
+      body:{
+       message:"修改成功"
+      }
+     }
+    let response=new Response(JSON.stringify(body));
+    return response
+  }
 async function postGames(request, env, ctx){
     let reqBody=await request.json();
     console.log(reqBody);
@@ -30,4 +42,4 @@ async function postGames(request, env, ctx){
      const response=new Response(JSON.stringify(body));
      return response;
   }
-  export default {postGames,postGame}
+  export default {postGames,postGame,postCode}

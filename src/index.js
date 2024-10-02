@@ -1,27 +1,19 @@
 import post from "./functions/post.js"
 import get from "./functions/get.js"
 const {getCode,getGames,addGame} = get;
-const {postGame,postGames} = post;
-  async function postCode(request, env, ctx){
-    let reqBody=await request.json();
-    let body={};
-     await hhz.put("code",JSON.stringify(reqBody.code));
-      body={
-       code:200,
-      body:{
-       message:"修改成功"
-      }
-     }
-    let response=new Response(JSON.stringify(body));
-    return response
-  }
+const {postGame,postGames,postCode} = post;
+
   async function test(request, env, ctx){
     let response=new Response(await request.text());
     return response
   }
   async function  scheduledEmit(event, env, ctx) {
-      await hhz.put("games_backup",await hhz.get("games"));
-      await hhz.put("games",JSON.stringify(raw));
+    const db = DB; 
+    const gamesStr=await hhz.get("games");
+      await hhz.put("games_backup",gamesStr);
+ for(let g in JSON.parse(gamesStr)){
+  await db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+ }
     }
     async  function fetchEmit(request, env, ctx) {
       if(request.method=='GET'){
