@@ -6,11 +6,11 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'output'),
-        filename:"worker.js"
-    },
+    entry: './src/index.js', // 入口文件路径
+  output: {
+    filename: 'worker.js', // 输出文件名
+    path: path.resolve(__dirname, 'output'), // 输出文件的目录
+  },
     plugins: [
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
@@ -35,8 +35,6 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
     } else {
         config.mode = 'development';
     }
