@@ -1,53 +1,7 @@
-async function getGames(request, env, ctx){
-    const games=JSON.parse(await env.hhz.get("games"))
-    let body={code:200,body:{games}}
-    let response=new Response(JSON.stringify(body));
-    return response
-  }
-  async function addGame(request, env, ctx){
-    const games=JSON.parse(await env.hhz.get("games"))
-    let body={code:200,body:{games}}
-    let response=new Response(JSON.stringify(body));
-    return response
-  }
-  async function postGames(request, env, ctx){
-    let reqBody=await request.json();
-    console.log(reqBody);
-    let body={};
-        await env.hhz.put("games",JSON.stringify(reqBody.games));
-      body={
-       code:200,
-      body:{
-       message:"添加成功"
-      }
-     }
-     const response=new Response(JSON.stringify(body));
-     return response;
-  }
-  async function postGame(request, env, ctx){
-    let reqBody=await request.json();
-    let body={};
-     let games=JSON.parse(await env.hhz.get("games"));
-      if(reqBody.game){
-        games.push(reqBody.game);
-        await env.hhz.put("games",JSON.stringify(games));
-      }
-      body={
-       code:200,
-      body:{
-       message:"添加成功"
-      }
-     }
-     const response=new Response(JSON.stringify(body));
-     return response;
-  }
-  //---------------code-----------------
-  async function getCode(request, env, ctx){
-    const code=JSON.parse(await env.hhz.get("code"));
-    let body={code:200,body:{code}}
-    let response=new Response(JSON.stringify(body));
-    return response
-  }
+import post from "./functions/post.js"
+import get from "./functions/get.js"
+const {getCode,getGames,addGame} = get;
+const {postGame,postGames} = post;
   async function postCode(request, env, ctx){
     let reqBody=await request.json();
     let body={};
