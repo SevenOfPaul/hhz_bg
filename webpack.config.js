@@ -11,6 +11,7 @@ const config = {
     filename: 'worker.js', // 输出文件名
     path: path.resolve(__dirname, 'output'), // 输出文件的目录
   },
+  devtool: 'source-map', 
     plugins: [
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
