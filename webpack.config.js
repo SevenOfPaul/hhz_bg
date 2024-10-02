@@ -10,10 +10,11 @@ const config = {
   output: {
     filename: 'worker.js', // 输出文件名
     path: path.resolve(__dirname, 'output'), 
-    library: {
-        name: 'MyWorker',
-        type: 'global', // 或者使用 'global'，取决于你希望如何在 Cloudflare Workers 中使用它
-      },
+  },  optimization: {
+    minimize: false
+  },
+  performance: {
+    hints: false
   },
   devtool: 'source-map', 
     plugins: [

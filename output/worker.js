@@ -437,7 +437,6 @@ function _test() {
 });
 })();
 
-self.MyWorker = __webpack_exports__;
 /******/ })()
 ;
 //# sourceMappingURL=worker.js.map
