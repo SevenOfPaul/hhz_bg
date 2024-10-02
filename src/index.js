@@ -20,6 +20,7 @@ const {postGame,postGames} = post;
     return response
   }
   addEventListener('fetch', event => {
+    console.log(event,"event")
     event.respondWith(scheduledEmit(event.request,ENV_hhz))
   })
   addEventListener('scheduled', event => {
