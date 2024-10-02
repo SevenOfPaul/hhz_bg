@@ -1,6 +1,5 @@
 name = "h"
 main  = "./output/worker.js"
-cron= [mon,wed,fri,sun]
 [[kv_namespaces]]
 binding = "hhz"
 id = "00d01617e3f54508886db4143435168d"
