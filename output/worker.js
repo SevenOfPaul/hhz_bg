@@ -350,16 +350,16 @@ function _test() {
   return _test.apply(this, arguments);
 }
 addEventListener('fetch', function (event) {
-  event.respondWith(fetchEvent(event.request, event.env, event.ctx));
+  event.respondWith(scheduledEmit(event.request, ENV_hhz));
 });
 addEventListener('scheduled', function (event) {
-  event.respondWith(scheduled(event.request, event.env, event.ctx));
+  event.respondWith(fetchEmit(event.request, ENV_hhz));
 });
-function scheduled(_x7, _x8, _x9) {
-  return _scheduled.apply(this, arguments);
+function scheduledEmit(_x7, _x8, _x9) {
+  return _scheduledEmit.apply(this, arguments);
 }
-function _scheduled() {
-  _scheduled = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event, env, ctx) {
+function _scheduledEmit() {
+  _scheduledEmit = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event, env, ctx) {
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
@@ -379,13 +379,13 @@ function _scheduled() {
       }
     }, _callee3);
   }));
-  return _scheduled.apply(this, arguments);
+  return _scheduledEmit.apply(this, arguments);
 }
-function fetchEvent(_x10, _x11, _x12) {
-  return _fetchEvent.apply(this, arguments);
+function fetchEmit(_x10, _x11, _x12) {
+  return _fetchEmit.apply(this, arguments);
 }
-function _fetchEvent() {
-  _fetchEvent = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(request, env, ctx) {
+function _fetchEmit() {
+  _fetchEmit = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(request, env, ctx) {
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -442,10 +442,11 @@ function _fetchEvent() {
       }
     }, _callee4);
   }));
-  return _fetchEvent.apply(this, arguments);
+  return _fetchEmit.apply(this, arguments);
 }
 })();
 
+window.MyWorker = __webpack_exports__;
 /******/ })()
 ;
 //# sourceMappingURL=worker.js.map

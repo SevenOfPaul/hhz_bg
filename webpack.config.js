@@ -9,7 +9,11 @@ const config = {
     entry: './src/index.js', // 入口文件路径
   output: {
     filename: 'worker.js', // 输出文件名
-    path: path.resolve(__dirname, 'output'), // 输出文件的目录
+    path: path.resolve(__dirname, 'output'), 
+    library: {
+        name: 'MyWorker',
+        type: 'window', // 或者使用 'global'，取决于你希望如何在 Cloudflare Workers 中使用它
+      },// 输出文件的目录
   },
   devtool: 'source-map', 
     plugins: [

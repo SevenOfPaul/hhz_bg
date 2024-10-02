@@ -1,3 +1,6 @@
 name = "h"
 main  = "./output/worker.js"
 compatibility_date = "2024-10-02"
+[env.production]
+  name = "hhz"
+  vars = { ENV_hhz = "hhz" }

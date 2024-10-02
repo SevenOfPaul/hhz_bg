@@ -20,16 +20,17 @@ const {postGame,postGames} = post;
     return response
   }
   addEventListener('fetch', event => {
-    event.respondWith(fetchEvent(event.request,event.env,event.ctx))
+    event.respondWith(scheduledEmit(event.request,ENV_hhz))
   })
   addEventListener('scheduled', event => {
-    event.respondWith(scheduled(event.request,event.env,event.ctx))
+    event.respondWith(fetchEmit(event.request,ENV_hhz))
   })
-    async function scheduled(event, env, ctx) {
+  
+    async function scheduledEmit(event, env, ctx) {
       await env.hhz.put("games_backup",await env.hhz.get("games"));
       await env.hhz.put("games",JSON.stringify(raw));
     }
-    async function   fetchEvent(request, env, ctx) {
+    async function fetchEmit(request, env, ctx) {
       if(request.method=='GET'){
         //请求
         if(request.url.indexOf("addGame")!==-1){
