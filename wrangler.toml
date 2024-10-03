@@ -7,4 +7,4 @@ id = "00d01617e3f54508886db4143435168d"
 binding = "DB" # available in your Worker on env.DB
 database_name = "h"
 database_id = "e7f10800-8ed7-4c0a-8a04-d2e8b4d9756a"
-compatibility_date = "2024-10-02"
+compatibility_date = "2024-10-03"
