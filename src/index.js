@@ -1,8 +1,72 @@
-import post from "./functions/post.js"
-import get from "./functions/get.js"
-const {getCode,getGames,addGame} = get;
-const {postGame,postGames,postCode} = post;
-
+// import post from "./functions/post.js"
+// import get from "./functions/get.js"
+// const {getCode,getGames,addGame} = get;
+// const {postGame,postGames,postCode} = post;
+async function getCode(request, env, ctx){
+  const code=JSON.parse(await hhz.get("code"));
+  let body={code:200,body:{code}}
+  let response=new Response(JSON.stringify(body));
+  return response
+} 
+async function getGames(request, env, ctx){
+  const games=JSON.parse(await hhz.get("games"))
+  let body={code:200,body:{games}}
+  for(let g in games){
+    await db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+   }
+  let response=new Response(JSON.stringify(body));
+  return response
+}
+async function addGame(request, env, ctx){
+  const games=JSON.parse(await hhz.get("games"))
+  let body={code:200,body:{games}}
+  let response=new Response(JSON.stringify(body));
+  return response
+}
+async function postCode(request, env, ctx){
+  let reqBody=await request.json();
+  let body={};
+   await hhz.put("code",JSON.stringify(reqBody.code));
+    body={
+     code:200,
+    body:{
+     message:"修改成功"
+    }
+   }
+  let response=new Response(JSON.stringify(body));
+  return response
+}
+async function postGames(request, env, ctx){
+  let reqBody=await request.json();
+  console.log(reqBody);
+  let body={};
+      await hhz.put("games",JSON.stringify(reqBody.games));
+    body={
+     code:200,
+    body:{
+     message:"添加成功"
+    }
+   }
+   const response=new Response(JSON.stringify(body));
+   return response;
+}
+async function postGame(request, env, ctx){
+  let reqBody=await request.json();
+  let body={};
+   let games=JSON.parse(await hhz.get("games"));
+    if(reqBody.game){
+      games.push(reqBody.game);
+      await hhz.put("games",JSON.stringify(games));
+    }
+    body={
+     code:200,
+    body:{
+     message:"添加成功"
+    }
+   }
+   const response=new Response(JSON.stringify(body));
+   return response;
+}
   async function test(request, env, ctx){
     let response=new Response(await request.text());
     return response
