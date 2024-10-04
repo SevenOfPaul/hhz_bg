@@ -1,6 +1,4 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+/******/ var __webpack_modules__ = ({
 
 /***/ "./src/functions/get.js":
 /*!******************************!*\
@@ -52,7 +50,7 @@ function getGames(_x4, _x5, _x6) {
 }
 function _getGames() {
   _getGames = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(request, env, ctx) {
-    var games, body, response;
+    var games, body, g, response;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
@@ -68,9 +66,22 @@ function _getGames() {
               games: games
             }
           };
+          _context2.t2 = _regeneratorRuntime().keys(games);
+        case 7:
+          if ((_context2.t3 = _context2.t2()).done) {
+            _context2.next = 13;
+            break;
+          }
+          g = _context2.t3.value;
+          _context2.next = 11;
+          return db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES", g.values());
+        case 11:
+          _context2.next = 7;
+          break;
+        case 13:
           response = new Response(JSON.stringify(body));
           return _context2.abrupt("return", response);
-        case 8:
+        case 15:
         case "end":
           return _context2.stop();
       }
@@ -250,61 +261,61 @@ function _postGame() {
 
 /***/ })
 
-/******/ 	});
+/******/ });
 /************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
+/******/ // The module cache
+/******/ var __webpack_module_cache__ = {};
+/******/ 
+/******/ // The require function
+/******/ function __webpack_require__(moduleId) {
+/******/ 	// Check if module is in cache
+/******/ 	var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 	if (cachedModule !== undefined) {
+/******/ 		return cachedModule.exports;
 /******/ 	}
-/******/ 	
+/******/ 	// Create a new module (and put it into the cache)
+/******/ 	var module = __webpack_module_cache__[moduleId] = {
+/******/ 		// no module.id needed
+/******/ 		// no module.loaded needed
+/******/ 		exports: {}
+/******/ 	};
+/******/ 
+/******/ 	// Execute the module function
+/******/ 	__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 
+/******/ 	// Return the exports of the module
+/******/ 	return module.exports;
+/******/ }
+/******/ 
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
+/******/ /* webpack/runtime/define property getters */
+/******/ (() => {
+/******/ 	// define getter functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
+/******/ 		}
+/******/ 	};
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/hasOwnProperty shorthand */
+/******/ (() => {
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/make namespace object */
+/******/ (() => {
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/ })();
+/******/ 
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
@@ -356,20 +367,31 @@ function scheduledEmit(_x4, _x5, _x6) {
 }
 function _scheduledEmit() {
   _scheduledEmit = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event, env, ctx) {
+    var db, gamesStr, g;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.t0 = hhz;
+          db = DB;
           _context2.next = 3;
           return hhz.get("games");
         case 3:
-          _context2.t1 = _context2.sent;
+          gamesStr = _context2.sent;
           _context2.next = 6;
-          return _context2.t0.put.call(_context2.t0, "games_backup", _context2.t1);
+          return hhz.put("games_backup", gamesStr);
         case 6:
-          _context2.next = 8;
-          return hhz.put("games", JSON.stringify(raw));
-        case 8:
+          _context2.t0 = _regeneratorRuntime().keys(JSON.parse(gamesStr));
+        case 7:
+          if ((_context2.t1 = _context2.t0()).done) {
+            _context2.next = 13;
+            break;
+          }
+          g = _context2.t1.value;
+          _context2.next = 11;
+          return db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES", g.values());
+        case 11:
+          _context2.next = 7;
+          break;
+        case 13:
         case "end":
           return _context2.stop();
       }
@@ -448,6 +470,5 @@ addEventListener('fetch', function (event) {
 });
 })();
 
-/******/ })()
-;
+
 //# sourceMappingURL=worker.js.map
