@@ -2,6 +2,7 @@
 // import get from "./functions/get.js"
 // const {getCode,getGames,addGame} = get;
 // const {postGame,postGames,postCode} = post;
+// import { D1 } from 'd1';
 async function getCode(request, env, ctx){
   const code=JSON.parse(await hhz.get("code"));
   let body={code:200,body:{code}}
@@ -12,7 +13,7 @@ async function getGames(request, env, ctx){
   const games=JSON.parse(await hhz.get("games"))
   let body={code:200,body:{games}}
   for(let g in games){
-    await db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+    await env.db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
    }
   let response=new Response(JSON.stringify(body));
   return response
