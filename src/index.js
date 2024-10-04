@@ -7,42 +7,38 @@ const {postGame,postGames,postCode} = post;
     let response=new Response(await request.text());
     return response
   }
-  async function  scheduledEmit(event, env, ctx) {
-    const db = DB; 
-    const gamesStr=await hhz.get("games");
-      await hhz.put("games_backup",gamesStr);
- for(let g in JSON.parse(gamesStr)){
-  await db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
- }
-    }
-    async  function fetchEmit(request, env, ctx) {
-      if(request.method=='GET'){
-        //请求
-        if(request.url.indexOf("addGame")!==-1){
-          return addGame(request, env, ctx);
-        }
-      if(request.url.indexOf("code")!==-1){
-        return getCode(request, env, ctx);
-      }
-   return getGames(request, env, ctx);
-      }else if(request.method=='POST'){
+    export default {
+      async scheduled(event, env, ctx) {
+        const db = DB; 
+        const gamesStr=await hhz.get("games");
+          await hhz.put("games_backup",gamesStr);
+     for(let g in JSON.parse(gamesStr)){
+      await db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+     }
+      },
+      async fetch(request, env, ctx) {
+        if(request.method=='GET'){
+          //请求
+          if(request.url.indexOf("addGame")!==-1){
+            return addGame(request, env, ctx);
+          }
         if(request.url.indexOf("code")!==-1){
-          return postCode(request, env, ctx);
+          return getCode(request, env, ctx);
         }
-        if(request.url.indexOf("addGame")!==-1){
-          return postGame(request, env, ctx);
+     return getGames(request, env, ctx);
+        }else if(request.method=='POST'){
+          if(request.url.indexOf("code")!==-1){
+            return postCode(request, env, ctx);
+          }
+          if(request.url.indexOf("addGame")!==-1){
+            return postGame(request, env, ctx);
+          }
+          if(request.url.indexOf("test")!==-1){
+            return test(request, env, ctx);
+          }
+            return postGames(request,env,ctx);
+        }else if(request.method=='OPTIONS'){
+         return new Response("*");
         }
-        if(request.url.indexOf("test")!==-1){
-          return test(request, env, ctx);
-        }
-          return postGames(request,env,ctx);
-      }else if(request.method=='OPTIONS'){
-       return new Response("*");
-      }
-    }
-    addEventListener('scheduled', event => {
-        event.respondWith(scheduledEmit(event.request))
-      })
-      addEventListener('fetch', event => {
-        event.respondWith(fetchEmit(event.request))
-      })
+      },
+    };
