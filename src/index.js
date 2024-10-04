@@ -13,7 +13,7 @@ async function getGames(request, env, ctx){
   const games=JSON.parse(await hhz.get("games"))
   let body={code:200,body:{games}}
   for(let g in games){
-    await env.db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+    await env.DB.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
    }
   let response=new Response(JSON.stringify(body));
   return response
@@ -74,11 +74,10 @@ async function postGame(request, env, ctx){
   }
     export default {
       async scheduled(event, env, ctx) {
-        const db = DB; 
         const gamesStr=await hhz.get("games");
           await hhz.put("games_backup",gamesStr);
      for(let g in JSON.parse(gamesStr)){
-      await db.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+      await env.DB.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
      }
       },
       async fetch(request, env, ctx) {
