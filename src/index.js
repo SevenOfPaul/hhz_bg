@@ -73,13 +73,13 @@ async function postGame(request, env, ctx){
     return response
   }
     export default {
-      async scheduled(event, env, ctx) {
-        const gamesStr=await hhz.get("games");
-          await hhz.put("games_backup",gamesStr);
-     for(let g in JSON.parse(gamesStr)){
-      await env.DB.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
-     }
-      },
+    //   async scheduled(event, env, ctx) {
+    //     const gamesStr=await hhz.get("games");
+    //       await hhz.put("games_backup",gamesStr);
+    //  for(let g in JSON.parse(gamesStr)){
+    //   await env.DB.exec("INSERT INTO games (id, name, pc,android,info,desc) VALUES",g.values());
+    //  }
+    //   },
       async fetch(request, env, ctx) {
         if(request.method=='GET'){
           //请求
